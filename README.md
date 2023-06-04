@@ -14,6 +14,9 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - backups:/backups
+environment: 
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
 volumes:
   pgdata:
   backups:
