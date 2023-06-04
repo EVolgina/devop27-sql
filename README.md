@@ -3,6 +3,21 @@
 Приведите получившуюся команду или docker-compose-манифест.
 ### Ответ:
 1. Необходимо создать yml файл, который настраивает экземпляр PostgreSQL с двумя томами для данных базы данных и резервных копий
+```devops@WORKBOOK:~/sql$ sudo nano docker-compose.yml
+version: '3'
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - backups:/backups
+volumes:
+  pgdata:
+  backups:
+```
 
 # Задача 2
 В БД из задачи 1:
