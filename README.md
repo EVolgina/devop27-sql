@@ -22,7 +22,8 @@ volumes:
   backups:
 ```
 ![ps](https://github.com/EVolgina/devop27-sql/blob/main/pssql.PNG)
-![zap]()
+![zap](https://github.com/EVolgina/devop27-sql/blob/main/docker%20ps.PNG)
+Подключаемся к docker контейнеру и переходим к задаче 2 (sudo docker exec -it 28852d151b64 psql -U admin -d admin)
 
 # Задача 2
 В БД из задачи 1:
@@ -45,9 +46,9 @@ volumes:
 - описание таблиц (describe);
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db;
 - список пользователей с правами над таблицами test_db.
-![]()
-![]()
-![]()
+![1]()
+![2]()
+![3]()
 ```
 SELECT grantee, table_name, privilege_type
 FROM information_schema.role_table_grants
