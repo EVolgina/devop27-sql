@@ -9,14 +9,14 @@ services:
   postgres:
     image: postgres:12
     restart: always
+    environment: 
+      - POSTGRES_USER: admin
+      - POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
       - backups:/backups
-environment: 
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
 volumes:
   pgdata:
   backups:
@@ -25,7 +25,7 @@ volumes:
 
 # Задача 2
 В БД из задачи 1:
-- создайте пользователя test-admin-user и БД test_db;
+- создайте пользователя test-admin-user и БД test_db; 
 - в БД test_db создайте таблицу orders и clients (спeцификация таблиц ниже);
 - предоставьте привилегии на все операции пользователю test-admin-user на таблицы БД test_db;
 - создайте пользователя test-simple-user;
@@ -44,7 +44,14 @@ volumes:
 - описание таблиц (describe);
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db;
 - список пользователей с правами над таблицами test_db.
-
+![]()
+![]()
+![]()
+```
+SELECT grantee, table_name, privilege_type
+FROM information_schema.role_table_grants
+WHERE table_schema = 'public' AND table_catalog = 'test_db';
+```
 # Задача 3
 Используя SQL-синтаксис, наполните таблицы следующими тестовыми данными:\
 Таблица orders
