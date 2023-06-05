@@ -21,7 +21,8 @@ volumes:
   pgdata:
   backups:
 ```
-![ps]()
+![ps](https://github.com/EVolgina/devop27-sql/blob/main/pssql.PNG)
+![zap]()
 
 # Задача 2
 В БД из задачи 1:
