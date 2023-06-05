@@ -47,8 +47,7 @@ volumes:
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db;
 - список пользователей с правами над таблицами test_db.
 ![1](https://github.com/EVolgina/devop27-sql/blob/main/%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86.PNG)
-![2]()
-![3]()
+![2](https://github.com/EVolgina/devop27-sql/blob/main/rol.PNG)
 ```
 SELECT grantee, table_name, privilege_type
 FROM information_schema.role_table_grants
