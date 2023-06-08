@@ -77,7 +77,18 @@ Ritchie Blackmore	Russia
 Приведите в ответе:
 - запросы,
 - результаты их выполнения.
+### Ответ
+![zd3] (https://github.com/EVolgina/devop27-sql/blob/main/zd3.PNG)
+```
+INSERT INTO orders (id, name, price)
+VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
+ 
+INSERT INTO clients (id, last_name, country_of_residence, order_id)
+VALUES (1, 'Иванов Иван Иванович', 'USA', 1), (2, 'Петров Петр Петрович', 'Canada', 2), (3, 'Иоганн Себастьян Бах', 'Japan', 3), (4, 'Ронни Джеймс Дио', 'Russia', 4), (5, 'Ritchie Blackmore', 'Russia', 5);
 
+SELECT COUNT(*) AS order_count FROM orders;
+SELECT COUNT(*) AS client_count FROM clients;
+```
 # Задача 4
 Часть пользователей из таблицы clients решили оформить заказы из таблицы orders.
 
