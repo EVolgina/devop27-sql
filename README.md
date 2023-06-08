@@ -120,11 +120,28 @@ SELECT COUNT(*) AS client_count FROM clients;
 Подсказка: используйте директиву UPDATE.
 
 ### Ответ:
+![zd4](https://github.com/EVolgina/devop27-sql/blob/main/sz4.PNG)
+```
+UPDATE clients
+SET order_id = (SELECT id FROM orders WHERE name = 'Книга')
+WHERE last_name = 'Иванов Иван Иванович' AND country_of_residence = 'USA';
+UPDATE clients
+SET order_id = (SELECT id FROM orders WHERE name = 'Монитор')
+WHERE last_name = 'Петров Петр Петрович' AND country_of_residence = 'Canada';
+UPDATE clients
+SET order_id = (SELECT id FROM orders WHERE name = 'Гитара')
+WHERE last_name = 'Иоганн Себастьян Бах’ AND country_of_residence = 'Japan';
 
+SELECT c.last_name, o.name AS order_name
+FROM clients c
+JOIN orders o ON c.order_id = o.id;
+
+```
 
 # Задача 5
 Получите полную информацию по выполнению запроса выдачи всех пользователей из задачи 4 (используя директиву EXPLAIN).
 Приведите получившийся результат и объясните, что значат полученные значения.
+### Ответ:
 
 # Задача 6
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).
