@@ -154,7 +154,7 @@ FROM clients c
 JOIN orders o ON c.order_id = o.id;
 
 ```
-![zd5]()
+![zd5](https://github.com/EVolgina/devop27-sql/blob/main/zd5.PNG)
 
 # Задача 6
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).
@@ -162,3 +162,24 @@ JOIN orders o ON c.order_id = o.id;
 Поднимите новый пустой контейнер с PostgreSQL.
 Восстановите БД test_db в новом контейнере.
 Приведите список операций, который вы применяли для бэкапа данных и восстановления.
+### Ответ:
+```
+vagrant@server1:~/sql$  sudo docker exec -it 28852d151b64 psql -U admin -d admin
+psql (12.15 (Debian 12.15-1.pgdg110+1))
+Type "help" for help.
+
+admin=# pg_dump -U admin  test_db > /backup/test_db.backup
+admin-# \q
+vagrant@server1:~/sql$ sudo docker stop 28852d151b64
+28852d151b64
+vagrant@server1:~/sql$ sudo docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS                          PORTS     NAMES
+ac264b651e84   prom/prometheus:latest   "/bin/prometheus --c…"   11 days ago   Restarting (2) 11 seconds ago             prometheus1
+vagrant@server1:~/sql$ mkdir new
+vagrant@server1:~/sql$ cd new
+vagrant@server1:~/sql/new$ sudo nano docker-compose.yml
+vagrant@server1:~/sql/new$ sudo docker run --name pg12 -e POSTGRES_USER=admin1 -e POSTGRES_PASSWORD=admin1 -d postgres:12
+7147e775dc6498b67225c5b6594654281784e47c68394e797b4cd3060fe4a669
+
+```
+
