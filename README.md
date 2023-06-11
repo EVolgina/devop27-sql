@@ -180,6 +180,22 @@ vagrant@server1:~/sql$ cd new
 vagrant@server1:~/sql/new$ sudo nano docker-compose.yml
 vagrant@server1:~/sql/new$ sudo docker run --name pg12 -e POSTGRES_USER=admin1 -e POSTGRES_PASSWORD=admin1 -d postgres:12
 7147e775dc6498b67225c5b6594654281784e47c68394e797b4cd3060fe4a669
-
+vagrant@server1:~/sql$ sudo docker cp 28852d151b64:/backups/backup_file.dump /home/vagrant/sql/backup_file.dump
+Successfully copied 7.68kB to /home/vagrant/sql/backup_file.dump
+vagrant@server1:~/sql$ sudo docker cp /home/vagrant/sql/backup_file.dump 7147e775dc64:/home/backup_file.dump
+Successfully copied 7.68kB to 7147e775dc64:/home/backup_file.dump
+vagrant@server1:~/sql$ sudo docker exec -it 7147e775dc64 psql -U admin1 -d admin1
+psql (12.15 (Debian 12.15-1.pgdg110+1))
+Type "help" for help.
+admin1=# CREATE DATABASE test_db;
+CREATE DATABASE
+admin1=# GRANT ALL PRIVILEGES ON DATABASE "test_db" to admin1;
+GRANT
+admin1=# CREATE USER admin WITH PASSWORD 'admin';
+CREATE ROLE
+admin1=# GRANT ALL PRIVILEGES ON DATABASE "test_db" to admin;
+GRANT
+admin1=#\q
+vagrant@server1:~/sql$ sudo docker exec -it 7147e775dc64 pg_restore -U admin -d test_db /home/backup_file.dump
 ```
 
