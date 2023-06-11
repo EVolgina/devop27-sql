@@ -196,6 +196,6 @@ CREATE ROLE
 admin1=# GRANT ALL PRIVILEGES ON DATABASE "test_db" to admin;
 GRANT
 admin1=#\q
-vagrant@server1:~/sql$ sudo docker exec -it 7147e775dc64 pg_restore -U admin -d test_db /home/backup_file.dump
+vagrant@server1:~/sql$ sudo docker exec -it 7147e775dc64 pg_restore -U admin1 -d test_db /home/backup_file.dump
 ```
 
